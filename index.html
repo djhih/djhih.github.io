@@ -4,21 +4,15 @@
   <meta charset="utf-8">
   
   
-  <title>Codeforces Round 957 (Div. 3) | web</title>
+  <title>web</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="(virtual)  timeline: 5&#x2F;15&#x2F;30&#x2F;130 solution A. Only Pluses三個整數a、b和c，求最大 a×b×c。最多進行5次以下操作：選擇其中一個整數將其增加1。 想法看到這邊直覺是把最小的數增加就可以找到最佳解。但沒時間證明，所以就直接唬爛過去了。 賽後證明 實作priority_queue 完成 官解123456for _">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Codeforces Round 957 (Div. 3)">
-<meta property="og:url" content="http://example.com/posts/0714.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="web">
+<meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="web">
-<meta property="og:description" content="(virtual)  timeline: 5&#x2F;15&#x2F;30&#x2F;130 solution A. Only Pluses三個整數a、b和c，求最大 a×b×c。最多進行5次以下操作：選擇其中一個整數將其增加1。 想法看到這邊直覺是把最小的數增加就可以找到最佳解。但沒時間證明，所以就直接唬爛過去了。 賽後證明 實作priority_queue 完成 官解123456for _">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/photo/IMG_4043.JPG">
-<meta property="article:published_time" content="2024-07-15T17:14:38.133Z">
-<meta property="article:modified_time" content="2024-07-15T17:14:38.133Z">
 <meta property="article:author" content="waa">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/photo/IMG_4043.JPG">
   
     <link rel="alternate" href="/atom.xml" title="web" type="application/atom+xml">
   
@@ -73,10 +67,12 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main">
+  
+    <article id="post-0715" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/posts/0714.html" class="article-date">
-  <time class="dt-published" datetime="2024-07-15T17:14:38.133Z" itemprop="datePublished">2024-07-16</time>
+    <a href="/2024/07/16/0715/" class="article-date">
+  <time class="dt-published" datetime="2024-07-15T16:38:44.820Z" itemprop="datePublished">2024-07-16</time>
 </a>
     
   </div>
@@ -86,8 +82,59 @@
       <header class="article-header">
         
   
-    <h1 class="p-name article-title" itemprop="headline name">
-      Codeforces Round 957 (Div. 3)
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/07/16/0715/">Codeforces Round 958 (Div. 2)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>(rated)</p>
+<p>timeline: 11&#x2F;22&#x2F;91</p>
+<h2 id="A-Split-the-Multiset"><a href="#A-Split-the-Multiset" class="headerlink" title="A. Split the Multiset"></a>A. Split the Multiset</h2><p>給 n, k，n 代表 multiset 一開始的數字，k 代表一次操作可以將一個數字分成幾個數字。<br>求最少操作數讓 multiset 變成 n 個 1。<br>example:<br>n&#x3D;5, k&#x3D;2<br>{5} &#x3D;&gt; {1, 4} &#x3D;&gt; {1, 1, 3} &#x3D;&gt; {1, 1, 1, 2} &#x3D;&gt; {1, 1, 1, 1, 1}<br>ans &#x3D; 4</p>
+<h3 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h3><p>拆 k-1 個 1 跟 n-(k-1) 就好</p>
+<h2 id="B-Make-Majority"><a href="#B-Make-Majority" class="headerlink" title="B. Make Majority"></a>B. Make Majority</h2><p>給長度為 n 的 01 字串，每次操作可以選連續同樣的 bits 轉為當前眾數 (0 or 1)。<br>求是否能將字串轉為 1。</p>
+<h3 id="想法-1"><a href="#想法-1" class="headerlink" title="想法"></a>想法</h3><p>如果原本 1 的數量多過 0 則 yes<br>如果 0 多，將連續的 0 全部變成一個 0，然後比對 0 1 數量。1 多則 yes，否則 no。</p>
+<h2 id="C-Increasing-Sequence-with-Fixed-OR"><a href="#C-Increasing-Sequence-with-Fixed-OR" class="headerlink" title="C. Increasing Sequence with Fixed OR"></a>C. Increasing Sequence with Fixed OR</h2><p>給一個數字 n，目標是一構造一個數列，相鄰兩數之間 or 結果為 n，並且嚴格遞增。<br>求最長的目標數列。</p>
+<h3 id="想法-2"><a href="#想法-2" class="headerlink" title="想法"></a>想法</h3><p>n 可以分成 1 bit 跟 0 bit，將 1 bit 由左到右依次替換為 0。<br>example: 111(2) &#x3D;&gt; {011, 101, 110, 111}</p>
+<h3 id="賽後想法"><a href="#賽後想法" class="headerlink" title="賽後想法"></a>賽後想法</h3><p>發現可以直接以公式算出答案，解會是 1 的各數 + 1，不用實際去跑一次。</p>
+<p>這題太晚想到可以把題目轉成，把哪一位數換成 0。<br>賽中想法是 : 如果嚴格遞增的情況，目標會希望讓每次增加的數最少。<br>但這個貪心的問題會變成，如果讓差值最小，可能會有 or 結果變差的情況，因為題目需要相鄰的數 or 起來保持相同，也就是當前差值最小接下來差值會被放大。<br>後來打掉重練，發現可以把題目看成那些位數轉 0，就發現一次只轉一個 0 會讓答案變成最佳解。</p>
+<p>寫這題的時候不確定自己是不是腦袋在空轉，好像寫了很多數字卻沒有仔細思考其中的規律。</p>
+<h2 id="D-The-Omnipotent-Monster-Killer"><a href="#D-The-Omnipotent-Monster-Killer" class="headerlink" title="D. The Omnipotent Monster Killer"></a>D. The Omnipotent Monster Killer</h2><p>給 tree，每個 node 有一個數值，每次操作可以把某些數值變成 0。<br>操作的規則是 : 不能消除相鄰的 node 的值，但可以消除很多 node 的值。<br>example: a-b-c-d<br>可以選擇消除 ac or bd<br>求在所有數值變成 0 之前每次操作剩餘的數值的總和。</p>
+<h3 id="想法-3"><a href="#想法-3" class="headerlink" title="想法"></a>想法</h3><p>先想到這樣最快是兩次消完，然後想甚麼時後不是兩次消完最好，也就是一次消除不是把相鄰的全部消掉最好的時候，考慮 dp，發現就是簡單的背包問題。但賽中來不及實作，TBD。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/07/16/0715/" data-id="clyn9b99k0000mgv52bjp4yr5" data-title="Codeforces Round 958 (Div. 2)" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-0714" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/07/15/0714/" class="article-date">
+  <time class="dt-published" datetime="2024-07-15T01:32:50.367Z" itemprop="datePublished">2024-07-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/07/15/0714/">Codeforces Round 957 (Div. 3)</a>
     </h1>
   
 
@@ -132,16 +179,69 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/posts/0714.html" data-id="clyn93pfl0000g8v52miahtlg" data-title="Codeforces Round 957 (Div. 3)" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/07/15/0714/" data-id="clyn9b99o0001mgv55vjn6w4a" data-title="Codeforces Round 957 (Div. 3)" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
     </footer>
   </div>
   
+</article>
+
+
+
+  
+    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/07/15/hello-world/" class="article-date">
+  <time class="dt-published" datetime="2024-07-15T01:31:20.281Z" itemprop="datePublished">2024-07-15</time>
+</a>
     
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/07/15/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/07/15/hello-world/" data-id="clyn9b99q0002mgv5d2didhb9" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
   
 </article>
+
+
+
+  
 
 
 </section>
@@ -157,9 +257,37 @@
     
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" target="_blank" rel="noopener" href="//2024/07/">July 2024</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/07/16/0715/">Codeforces Round 958 (Div. 2)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/07/15/0714/">Codeforces Round 957 (Div. 3)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/07/15/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
   
 </aside>
         
