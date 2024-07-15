@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>web</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Codeforces Round #957 (Div. 3)(virtual)  solution A. Only Pluses三個整數a、b和c，求最大 a×b×c。最多進行5次以下操作：選擇其中一個整數將其增加1。 想法看到這邊直覺是把最小的數增加就可以找到最佳解。但沒時間證明，所以就直接唬爛過去了。 賽後證明 實作priority_queue 完成 官解123456for _ in rang">
+<meta property="og:type" content="website">
+<meta property="og:title" content="web">
+<meta property="og:url" content="http://example.com/0714.html">
+<meta property="og:site_name" content="web">
+<meta property="og:description" content="Codeforces Round #957 (Div. 3)(virtual)  solution A. Only Pluses三個整數a、b和c，求最大 a×b×c。最多進行5次以下操作：選擇其中一個整數將其增加1。 想法看到這邊直覺是把最小的數增加就可以找到最佳解。但沒時間證明，所以就直接唬爛過去了。 賽後證明 實作priority_queue 完成 官解123456for _ in rang">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/photo/IMG_4043.JPG">
+<meta property="article:published_time" content="2024-07-15T01:28:54.402Z">
+<meta property="article:modified_time" content="2024-07-14T18:19:38.603Z">
+<meta property="article:author" content="waa">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/photo/IMG_4043.JPG">
+  
+    <link rel="alternate" href="/atom.xml" title="web" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">web</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/0714.html" class="article-date">
+  <time class="dt-published" datetime="2024-07-15T01:28:54.402Z" itemprop="datePublished">2024-07-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Codeforces-Round-957-Div-3"><a href="#Codeforces-Round-957-Div-3" class="headerlink" title="Codeforces Round #957 (Div. 3)"></a>Codeforces Round #957 (Div. 3)</h1><p>(virtual) </p>
+<p><a target="_blank" rel="noopener" href="https://codeforces.com/blog/entry/131461">solution</a></p>
+<h2 id="A-Only-Pluses"><a href="#A-Only-Pluses" class="headerlink" title="A. Only Pluses"></a>A. Only Pluses</h2><p>三個整數a、b和c，求最大 a×b×c。<br>最多進行5次以下操作：<br>選擇其中一個整數將其增加1。</p>
+<h3 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h3><p>看到這邊直覺是把最小的數增加就可以找到最佳解。<br>但沒時間證明，所以就直接唬爛過去了。</p>
+<h3 id="賽後證明"><a href="#賽後證明" class="headerlink" title="賽後證明"></a>賽後證明</h3><p><img src="/photo/IMG_4043.JPG" alt="alt text"></p>
+<h3 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h3><p>priority_queue 完成</p>
+<h3 id="官解"><a href="#官解" class="headerlink" title="官解"></a>官解</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">int</span>(<span class="built_in">input</span>())):</span><br><span class="line">    arr = <span class="built_in">sorted</span>(<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">        arr[<span class="number">0</span>]+=<span class="number">1</span></span><br><span class="line">        arr.sort()</span><br><span class="line">    <span class="built_in">print</span>(arr[<span class="number">0</span>] * arr[<span class="number">1</span>] * arr[<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+
+<h2 id="B-Angry-Monk"><a href="#B-Angry-Monk" class="headerlink" title="B. Angry Monk"></a>B. Angry Monk</h2><p>給定 n, k，n 代表數字總和，k 代表 n 被分成幾個數字。<br>可以將 1, a 合併成 a+1，或是將 a 分成 a-1, 1。<br>求最少幾次可以將 k 個數合併成 n。</p>
+<h3 id="想法-1"><a href="#想法-1" class="headerlink" title="想法"></a>想法</h3><p>看到之後想說直接把最大的留下，然後剩下的就直接全部分解，最後再一次合起來，因為合併只能合併 a, 1，也就是說兩個數字要合併其中一個一定要被拆成 1。但這是貪心，沒證明。</p>
+<h3 id="賽後證明-1"><a href="#賽後證明-1" class="headerlink" title="賽後證明"></a>賽後證明</h3><p>如果不是將最大的跟其他小的合併而是找一個小的跟其他合併，這樣代表需要把大的拆解，或是把合併出來的消除，如果把合併出來的消除就不是最佳解。所以做法會是選定一塊把其他都拆解掉，在這個解法下，如果不是選最大的留下就不會是最佳解。</p>
+<h3 id="官方想法"><a href="#官方想法" class="headerlink" title="官方想法"></a>官方想法</h3><p>官解竟然是用公式，還真的沒想到。<br>我們可以將其中一個拆解成長度為1的片段，然後將這些片段連接到長度為y的燉鍋上。總共，我們將進行2x−1次操作。由於我們想連接k個片段，至少k−1個片段需要被拆解並連接到其他片段上。如果我們將某些片段連接到一個片段上，則拆解它們是沒有意義的，因為拆解這些片段時也需要移除這些已連接的片段。因此，我們會選擇一個片段，將所有其他片段連接到這個片段上。最優解是選擇最大尺寸的片段，並將所有其他片段連接到它上面。因此，答案是2⋅(n−mx)−k+1，其中mx是最大片段的長度。</p>
+<h3 id="實作-1"><a href="#實作-1" class="headerlink" title="實作"></a>實作</h3><p>sort + diff</p>
+<h3 id="官解-1"><a href="#官解-1" class="headerlink" title="官解"></a>官解</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n, k;</span><br><span class="line">cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">s</span><span class="params">(k)</span></span>;</span><br><span class="line"><span class="type">int</span> m = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; k; i++)&#123;</span><br><span class="line">    cin &gt;&gt; s[i];</span><br><span class="line">    m = <span class="built_in">max</span>(m, s[i]);</span><br><span class="line">&#125;</span><br><span class="line">cout &lt;&lt; <span class="number">2</span> * (n - m) - k + <span class="number">1</span> &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="C-Gorilla-and-Permutation"><a href="#C-Gorilla-and-Permutation" class="headerlink" title="C. Gorilla and Permutation"></a>C. Gorilla and Permutation</h2><p>有兩個 function, f 和 g。<br>f(i) 代表在前 i 個數中，所有大於等於 k 的數字的和。<br>g(i) 代表在前 i 個數中，所有小於等於 m 的數字的和。<br>給定 n, m, k<br>n 代表數列由 1~n 組成並且每個數都洽出現一次。<br>求 f-g 的最大值。</p>
+<h3 id="想法-2"><a href="#想法-2" class="headerlink" title="想法"></a>想法</h3><p>想到可以把 &gt;k 的由大到小排，並放在前面，<br>把 &lt;m 的由小到大排放到後在，這樣會讓 f 最大而 g 最小。<br>注意到的細節式 m&#x3D;k 的時候應該把 m 放到最後面，因為 m 會是大於等於 k 的最小數並且是小於等於 m 的最大數，所以後到最後面可以保證 f 最大 g 最小。</p>
+<h3 id="官方想法-1"><a href="#官方想法-1" class="headerlink" title="官方想法"></a>官方想法</h3><p>差不多</p>
+<h3 id="實作-2"><a href="#實作-2" class="headerlink" title="實作"></a>實作</h3><p>2 個 pq</p>
+<h3 id="官解-2"><a href="#官解-2" class="headerlink" title="官解"></a>官解</h3><p>短到讓人讚嘆</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">int</span>(<span class="built_in">input</span>()):</span><br><span class="line">    n,m,k = <span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    <span class="built_in">print</span>(*<span class="built_in">range</span>(n,m,-<span class="number">1</span>), *<span class="built_in">range</span>(<span class="number">1</span>,m))</span><br></pre></td></tr></table></figure>
+
+<h2 id="D-Test-of-Love"><a href="#D-Test-of-Love" class="headerlink" title="D. Test of Love"></a>D. Test of Love</h2><p>ErnKor願意為了Julen做任何事情，甚至游過充滿鱷魚的沼澤。我們決定測試這份愛。ErnKor必須游過一條寬1米，長度為n米的河。</p>
+<p>這條河非常冷。因此，在整個游泳過程中（從0到n+1），ErnKor最多可以在水中游泳k米。為了人類的考量，我們在河中不僅加入了鱷魚，還有他可以跳上的原木。我們的測試如下：</p>
+<p>最初，ErnKor在左岸，需要到達右岸。左岸和右岸分別位於0和n+1米。這條河可以用n段表示，每段長度為1米。每段包含原木’L’、鱷魚’C’或只是水’W’。ErnKor可以按以下方式移動：</p>
+<p>如果他在表面上（即在岸上或原木上），他可以向前跳不超過m米（他可以跳到岸上、原木上或水中）。<br>如果他在水中，他只能游到下一段河段（或者如果他在第n米處，則游到岸上）。<br>ErnKor不能以任何方式落在有鱷魚的河段。<br>判斷ErnKor能否到達右岸。</p>
+<p>這題的題目看很久沒有懂 swim 的規則，專注力 gone…</p>
+<h3 id="想法-3"><a href="#想法-3" class="headerlink" title="想法"></a>想法</h3><p>其實這題我卡很久，到後面還是看了提示才想到的，賽中應該就想不出來了。<br>想法卡住的地方是 : 游泳距離的處理</p>
+<p>主要是想靠 dp 去解，但 dp 的狀態設得不好，一直每想到要怎麼把游泳距離放到 dp 式子中。</p>
+<p>然後想 greedy 的時候在煩惱如果現在游了之後卻發現可以直接跳過去的困擾。</p>
+<p>這邊結合官方想法一起講。<br>dp 的部分應該是把狀態設為到 i 的最小游泳次數。<br>greedy 的部分則是，先跳到不能跳在討論要不要游，如果游了就要在看一次最遠能跳到哪邊，依此類推。</p>
+<p>其實 greedy 的部分不難想，要再來回顧一下為甚麼 greedy 的部分會卡。</p>
+<h3 id="解暫略"><a href="#解暫略" class="headerlink" title="解暫略"></a>解暫略</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/0714.html" data-id="clyn258t90001k8v5czzn5obr" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/07/15/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 waa<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
